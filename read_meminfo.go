@@ -5,8 +5,8 @@ import (
 	"path/filepath"
 )
 
-// Read a file and return his content as a string
-func ReadFile(filePath string) (string, error) {
+// ReadFile read a file and return his content as a string
+func readFile(filePath string) (string, error) {
 	filePath, err := filepath.Abs(filePath)
 	if err != nil {
 		return "", err
@@ -20,6 +20,7 @@ func ReadFile(filePath string) (string, error) {
 	return string(file), nil
 }
 
-func ReadMeminfo() (string, error) {
-	return ReadFile("/proc/meminfo")
+// ReadMeminfo read the `/proc/meminfo` file and return it as a string
+func readMeminfo() (string, error) {
+	return readFile("/proc/meminfo")
 }
